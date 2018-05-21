@@ -14,7 +14,7 @@ The runtime/main.tf and state.tf/main.tf contain the list of infrastructure we a
 
 This allows us to re-use code wherever possible and maintain standards.
 
-Output of the terraform runs are in the _DOC/ folder
+Output of the terraform runs are in the _DOC/ folder, the errors were my free AWS account ran out of IP Addresses.
 
 Tests are in the tests/ folder, however I ran out of time to do full coverage.
 
