@@ -11,6 +11,9 @@ resource "aws_elb" "default" {
   security_groups = ["${var.security_group}"]
   instances       = ["${var.instance_id}"]
 
+  security_groups = ["${var.security_group}"]
+  instances       = ["${var.instance_id}"]
+
   listener {
     instance_port     = 80
     instance_protocol = "http"

@@ -10,4 +10,7 @@ apply: plan
 destroy:
 	terraform destroy -var-file ../terraform.tfvars -auto-approve 
 
+destroy:
+	terraform destroy -var-file ../terraform.tfvars
+
 test:

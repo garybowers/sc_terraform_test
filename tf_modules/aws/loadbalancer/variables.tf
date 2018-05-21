@@ -18,6 +18,9 @@ variable "instance_id" {
   type = "list"
 }
 
+variable "subnet_id" {
+  type = "string"
+}
 
 variable "security_group" {
   type = "string"
