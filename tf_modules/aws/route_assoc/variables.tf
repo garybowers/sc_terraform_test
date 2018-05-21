@@ -5,3 +5,7 @@ variable "subnet_id" {
 variable "route_id" {
   type = "string"
 }
+
+variable "az_count" {
+  type = "string"
+}

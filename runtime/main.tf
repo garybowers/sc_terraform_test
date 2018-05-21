@@ -110,12 +110,14 @@ module "app_instance" {
 }
 
 module "route_association" {
+  az_count		    = "${var.az_count}"
   source                    = "../tf_modules/aws/route_assoc"
   subnet_id                 = "${module.web_subnet.aws_subnet_id}"
   route_id                  = "${module.internet_gateway.aws_route_table}"
 }
 
 module "nat_gateway" {
+  az_count		    = "${var.az_count}"
   source                    = "../tf_modules/aws/nat_gw"
   subnet_id		    = ["${module.web_subnet.aws_subnet_id}"]
   nat_eip		    = ["${module.eip.aws_eip_nat_ips}"]
