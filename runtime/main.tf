@@ -27,11 +27,15 @@ module "eip" {
 #  source                    = "../tf_modules/aws/nat_gw"
 #}
 
-#module "load_balancer" {
-#  source		    = "../tf_modules/aws/loadbalancer"
-#  name			    = "${var.prefix}-lb"
-#  vpc_id		    = "${module.vpc.aws_vpc_id}"
-#}
+module "load_balancer" {
+  source		    = "../tf_modules/aws/loadbalancer"
+  name			    = "${var.prefix}-lb"
+  log_bucket		    = "${var.prefix}-access-logs"
+  prefix		    = "${var.prefix}"
+  instance_id		    = "${module.web_instance.aws_instance_id}"
+  subnet_id		    = "${module.web_subnet.aws_subnet_id}"
+  security_group	    = "${module.security_group.lb_security_group}"
+}
 
 module "keypair" {
   source                    = "../tf_modules/aws/key_pair"
@@ -66,16 +70,17 @@ module "db_subnet" {
 }
 
 module "db_instance" {
-  name			    = "${var.prefix}-web-vm"
+  name			    = "${var.prefix}-db-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"
-  subnetid		    = "${module.web_subnet.aws_subnet_id}"
+  subnetid		    = "${module.db_subnet.aws_subnet_id}"
   region		    = "${var.region}"
   ssh_user		    = "${var.ssh_user}"
   security_group	    = "${module.security_group.aws_security_group}"
+  key_pair		    = "${module.keypair.aws_key_pair}"
 }
 
-module "application_subnet" {
+module "app_subnet" {
   source                    = "../tf_modules/aws/subnet"
   name                      = "${var.prefix}-app_server_subnet"
   subnet_cidr               = "${var.appserver_cidr}"
@@ -83,12 +88,13 @@ module "application_subnet" {
 }
 
 module "app_instance" {
-  name			    = "${var.prefix}-web-vm"
+  name			    = "${var.prefix}-app-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"
-  subnetid		    = "${module.web_subnet.aws_subnet_id}"
+  subnetid		    = "${module.app_subnet.aws_subnet_id}"
   region		    = "${var.region}"
   ssh_user		    = "${var.ssh_user}"
   security_group	    = "${module.security_group.aws_security_group}"
+  key_pair		    = "${module.keypair.aws_key_pair}"
 }
 

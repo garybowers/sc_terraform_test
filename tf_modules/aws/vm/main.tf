@@ -1,4 +1,7 @@
 resource "aws_instance" "default" {
+  tags {
+    Name = "${var.name}"
+  }
   connection {
     user = "${var.ssh_user}"
   }

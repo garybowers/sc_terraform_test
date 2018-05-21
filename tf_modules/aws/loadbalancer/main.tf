@@ -1,22 +1,26 @@
 resource "aws_elb" "default" {
-  name = "${var.properties['name']}"
+  name = "${var.name}"
   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]	
 
   access_logs {
-    bucket        = "${var.logbucket}"
+    bucket        = "${var.log_bucket}"
     bucket_prefix = "${var.prefix}"
     interval      = 60
   }
 
+  subnets         = ["${var.subnet_id}"]
+  security_groups = ["${var.security_group}"]
+  instances       = ["${var.instance_id}"]
+
   listener {
-    instance_port     = 8000
+    instance_port     = 80
     instance_protocol = "http"
     lb_port           = 80
     lb_protocol       = "http"
   }
 
   listener {
-    instance_port      = 8000
+    instance_port      = 80
     instance_protocol  = "http"
     lb_port            = 443
     lb_protocol        = "https"
@@ -31,14 +35,13 @@ resource "aws_elb" "default" {
     interval            = 30
   }
 
-  instances                   = ["${aws_instance.foo.id}"]
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true
   connection_draining_timeout = 400
 
   tags {
-    Name = "${var.properties['name']}"
+    Name = "${var.name}"
   }
 
 }
