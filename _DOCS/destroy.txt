@@ -1,0 +1,162 @@
+terraform destroy -var-file ../terraform.tfvars -auto-approve 
+[0m[1maws_eip.default[1]: Refreshing state... (ID: eipalloc-07f8e47c80699e356)[0m
+[0m[1maws_key_pair.default: Refreshing state... (ID: gary)[0m
+[0m[1maws_eip.default[0]: Refreshing state... (ID: eipalloc-0afa8bd41ab542f4e)[0m
+[0m[1maws_default_vpc.default: Refreshing state... (ID: vpc-0f655c54af3e49884)[0m
+[0m[1maws_eip.default[1]: Refreshing state... (ID: eipalloc-03be5a72e06a01e3f)[0m
+[0m[1maws_s3_bucket.default: Refreshing state... (ID: test1-database)[0m
+[0m[1maws_s3_bucket.default: Refreshing state... (ID: test1-access-logs)[0m
+[0m[1maws_vpc.default: Refreshing state... (ID: vpc-06776377441ff4a9f)[0m
+[0m[1maws_s3_bucket_policy.default: Refreshing state... (ID: test1-database)[0m
+[0m[1maws_s3_bucket_policy.default: Refreshing state... (ID: test1-access-logs)[0m
+[0m[1maws_subnet.default[1]: Refreshing state... (ID: subnet-0f4b3f60e2a489f8d)[0m
+[0m[1maws_subnet.default[0]: Refreshing state... (ID: subnet-0a85e00edec121112)[0m
+[0m[1maws_internet_gateway.default: Refreshing state... (ID: igw-00e84620adbe0c648)[0m
+[0m[1maws_subnet.default[1]: Refreshing state... (ID: subnet-0301297ddcfdbba45)[0m
+[0m[1maws_subnet.default[0]: Refreshing state... (ID: subnet-07ce39ab89ea325b6)[0m
+[0m[1maws_security_group.db: Refreshing state... (ID: sg-0bf8be08f7d01b1e6)[0m
+[0m[1maws_security_group.app: Refreshing state... (ID: sg-0c1537a142363086c)[0m
+[0m[1maws_security_group.elb: Refreshing state... (ID: sg-09dd78bc541284810)[0m
+[0m[1maws_security_group.default: Refreshing state... (ID: sg-06e66877d52209da3)[0m
+[0m[1maws_security_group.web: Refreshing state... (ID: sg-0a294d99aef7a4ed0)[0m
+[0m[1maws_subnet.default[1]: Refreshing state... (ID: subnet-056ac9777bae1f0b8)[0m
+[0m[1maws_subnet.default[0]: Refreshing state... (ID: subnet-04ee051d795d2e442)[0m
+[0m[1maws_route_table.default: Refreshing state... (ID: rtb-0c3257d43f815ffde)[0m
+[0m[1maws_instance.default[0]: Refreshing state... (ID: i-027446d4c2092c16b)[0m
+[0m[1maws_instance.default[1]: Refreshing state... (ID: i-0be7e2d8a50bea485)[0m
+[0m[1maws_nat_gateway.default[1]: Refreshing state... (ID: nat-0bf414e909e80e052)[0m
+[0m[1maws_nat_gateway.default[0]: Refreshing state... (ID: nat-06178258c31d1ff45)[0m
+[0m[1maws_instance.default[0]: Refreshing state... (ID: i-0764fe60caee661da)[0m
+[0m[1maws_instance.default[1]: Refreshing state... (ID: i-0d7d057a966ab4258)[0m
+[0m[1maws_route_table_association.a[0]: Refreshing state... (ID: rtbassoc-03de95c8df4d8aa30)[0m
+[0m[1maws_route_table_association.a[1]: Refreshing state... (ID: rtbassoc-06ab5d66b89ebdb92)[0m
+[0m[1maws_instance.default[0]: Refreshing state... (ID: i-008a076b29465f298)[0m
+[0m[1maws_instance.default[1]: Refreshing state... (ID: i-09020c257606902b4)[0m
+[0m[1maws_elb.default: Refreshing state... (ID: test1-lb)[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket_policy.default: Destroying... (ID: test1-access-logs)[0m[0m
+[0m[1mmodule.runtime.module.load_balancer.aws_elb.default: Destroying... (ID: test1-lb)[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[0]: Destroying... (ID: nat-06178258c31d1ff45)[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[1]: Destroying... (ID: i-09020c257606902b4)[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[1]: Destroying... (ID: nat-0bf414e909e80e052)[0m[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[0]: Destroying... (ID: rtbassoc-03de95c8df4d8aa30)[0m[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket_policy.default: Destroying... (ID: test1-database)[0m[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[1]: Destroying... (ID: rtbassoc-06ab5d66b89ebdb92)[0m[0m
+[0m[1mmodule.state.module.eip.aws_eip.default[1]: Destroying... (ID: eipalloc-07f8e47c80699e356)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_default_vpc.default: Destroying... (ID: vpc-0f655c54af3e49884)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_default_vpc.default: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[0]: Destroying... (ID: i-0764fe60caee661da)[0m[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[1]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket_policy.default: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[1]: Destroying... (ID: i-0d7d057a966ab4258)[0m[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket_policy.default: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[0]: Destroying... (ID: i-008a076b29465f298)[0m[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket.default: Destroying... (ID: test1-access-logs)[0m[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[0]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket.default: Destroying... (ID: test1-database)[0m[0m
+[0m[1mmodule.state.module.eip.aws_eip.default[1]: Destruction complete after 1s[0m[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_route_table.default: Destroying... (ID: rtb-0c3257d43f815ffde)[0m[0m
+[0m[1mmodule.runtime.module.load_balancer.aws_elb.default: Destruction complete after 1s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.elb: Destroying... (ID: sg-09dd78bc541284810)[0m[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket.default: Destruction complete after 1s[0m[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[1]: Destroying... (ID: i-0be7e2d8a50bea485)[0m[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_route_table.default: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[0]: Destroying... (ID: i-027446d4c2092c16b)[0m[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket.default: Destruction complete after 3s[0m[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_internet_gateway.default: Destroying... (ID: igw-00e84620adbe0c648)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still destroying... (ID: i-09020c257606902b4, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still destroying... (ID: nat-0bf414e909e80e052, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still destroying... (ID: i-0764fe60caee661da, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still destroying... (ID: i-0d7d057a966ab4258, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still destroying... (ID: i-008a076b29465f298, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.security_group.aws_security_group.elb: Still destroying... (ID: sg-09dd78bc541284810, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still destroying... (ID: i-0be7e2d8a50bea485, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still destroying... (ID: i-027446d4c2092c16b, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.internet_gateway.aws_internet_gateway.default: Still destroying... (ID: igw-00e84620adbe0c648, 10s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still destroying... (ID: i-09020c257606902b4, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still destroying... (ID: nat-0bf414e909e80e052, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still destroying... (ID: i-0764fe60caee661da, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still destroying... (ID: i-0d7d057a966ab4258, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still destroying... (ID: i-008a076b29465f298, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.security_group.aws_security_group.elb: Still destroying... (ID: sg-09dd78bc541284810, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still destroying... (ID: i-0be7e2d8a50bea485, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still destroying... (ID: i-027446d4c2092c16b, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.internet_gateway.aws_internet_gateway.default: Still destroying... (ID: igw-00e84620adbe0c648, 20s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still destroying... (ID: i-09020c257606902b4, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still destroying... (ID: nat-0bf414e909e80e052, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still destroying... (ID: i-0764fe60caee661da, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still destroying... (ID: i-0d7d057a966ab4258, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still destroying... (ID: i-008a076b29465f298, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.security_group.aws_security_group.elb: Still destroying... (ID: sg-09dd78bc541284810, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still destroying... (ID: i-0be7e2d8a50bea485, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still destroying... (ID: i-027446d4c2092c16b, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.internet_gateway.aws_internet_gateway.default: Still destroying... (ID: igw-00e84620adbe0c648, 30s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.elb: Destruction complete after 38s[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still destroying... (ID: i-09020c257606902b4, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still destroying... (ID: nat-0bf414e909e80e052, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still destroying... (ID: i-0764fe60caee661da, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still destroying... (ID: i-0d7d057a966ab4258, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still destroying... (ID: i-008a076b29465f298, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still destroying... (ID: i-0be7e2d8a50bea485, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still destroying... (ID: i-027446d4c2092c16b, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.internet_gateway.aws_internet_gateway.default: Still destroying... (ID: igw-00e84620adbe0c648, 40s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still destroying... (ID: nat-0bf414e909e80e052, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still destroying... (ID: i-09020c257606902b4, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still destroying... (ID: i-0764fe60caee661da, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still destroying... (ID: i-008a076b29465f298, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still destroying... (ID: i-0d7d057a966ab4258, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[0]: Destruction complete after 51s[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still destroying... (ID: i-0be7e2d8a50bea485, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still destroying... (ID: i-027446d4c2092c16b, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.internet_gateway.aws_internet_gateway.default: Still destroying... (ID: igw-00e84620adbe0c648, 50s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still destroying... (ID: i-09020c257606902b4, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still destroying... (ID: nat-0bf414e909e80e052, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still destroying... (ID: i-0d7d057a966ab4258, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still destroying... (ID: i-008a076b29465f298, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[1]: Destruction complete after 1m1s[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[0]: Destruction complete after 1m1s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.app: Destroying... (ID: sg-0c1537a142363086c)[0m[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[1]: Destroying... (ID: subnet-056ac9777bae1f0b8)[0m[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[0]: Destroying... (ID: subnet-04ee051d795d2e442)[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[1]: Destruction complete after 1m1s[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still destroying... (ID: i-0be7e2d8a50bea485, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[1]: Destroying... (ID: subnet-0f4b3f60e2a489f8d)[0m[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[0]: Destroying... (ID: subnet-0a85e00edec121112)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still destroying... (ID: i-027446d4c2092c16b, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[1]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.db: Destroying... (ID: sg-0bf8be08f7d01b1e6)[0m[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[1]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[0]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.app: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[0]: Destruction complete after 1s[0m[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[1]: Destruction complete after 1m1s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.db: Destruction complete after 1s[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[1]: Destruction complete after 1m2s[0m[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[0]: Destruction complete after 1m1s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.web: Destroying... (ID: sg-0a294d99aef7a4ed0)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.default: Destroying... (ID: sg-06e66877d52209da3)[0m[0m
+[0m[1mmodule.runtime.module.keypair.aws_key_pair.default: Destroying... (ID: gary)[0m[0m
+[0m[1mmodule.runtime.module.keypair.aws_key_pair.default: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.default: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.web: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.internet_gateway.aws_internet_gateway.default: Still destroying... (ID: igw-00e84620adbe0c648, 1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_internet_gateway.default: Destruction complete after 1m7s[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still destroying... (ID: nat-06178258c31d1ff45, 1m10s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[0]: Destruction complete after 1m12s[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[1]: Destroying... (ID: subnet-0301297ddcfdbba45)[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[0]: Destroying... (ID: subnet-07ce39ab89ea325b6)[0m[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[0]: Destroying... (ID: eipalloc-0afa8bd41ab542f4e)[0m[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[1]: Destroying... (ID: eipalloc-03be5a72e06a01e3f)[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[1]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[0]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.vpc.aws_vpc.default: Destroying... (ID: vpc-06776377441ff4a9f)[0m[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[0]: Destruction complete after 0s[0m[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[1]: Destruction complete after 1s[0m[0m
+[0m[1mmodule.runtime.module.vpc.aws_vpc.default: Destruction complete after 1s[0m[0m
+[0m[1m[32m
+Destroy complete! Resources: 34 destroyed.[0m

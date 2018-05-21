@@ -1,0 +1,1302 @@
+terraform init
+[0m[1mInitializing modules...[0m
+- module.state
+- module.runtime
+- module.state.logs_bucket
+- module.state.db_bucket
+- module.state.eip
+- module.runtime.vpc
+- module.runtime.internet_gateway
+- module.runtime.security_group
+- module.runtime.eip
+- module.runtime.load_balancer
+- module.runtime.keypair
+- module.runtime.web_subnet
+- module.runtime.web_instance
+- module.runtime.db_subnet
+- module.runtime.db_instance
+- module.runtime.app_subnet
+- module.runtime.app_instance
+- module.runtime.route_association
+- module.runtime.nat_gateway
+
+[0m[1mInitializing provider plugins...[0m
+
+The following providers do not have any version constraints in configuration,
+so the latest version was installed.
+
+To prevent automatic upgrades to new major versions that may contain breaking
+changes, it is recommended to add version = "..." constraints to the
+corresponding provider blocks in configuration, with the constraint strings
+suggested below.
+
+* provider.aws: version = "~> 1.19"
+
+[0m[1m[32mTerraform has been successfully initialized![0m[32m[0m
+[0m[32m
+You may now begin working with Terraform. Try running "terraform plan" to see
+any changes that are required for your infrastructure. All Terraform commands
+should now work.
+
+If you ever set or change modules or backend configuration for Terraform,
+rerun this command to reinitialize your working directory. If you forget, other
+commands will detect it and remind you to do so if necessary.[0m
+terraform plan -var-file ../terraform.tfvars
+[0m[1mRefreshing Terraform state in-memory prior to plan...[0m
+The refreshed state will be used to calculate this plan, but will not be
+persisted to local or remote state storage.
+[0m
+
+------------------------------------------------------------------------
+
+An execution plan has been generated and is shown below.
+Resource actions are indicated with the following symbols:
+  [32m+[0m create
+[0m
+Terraform will perform the following actions:
+
+[32m  [32m+[0m [32mmodule.runtime.module.app_instance.aws_instance.default[0]
+[0m      id:                                         <computed>
+      ami:                                        "ami-a681addf"
+      associate_public_ip_address:                <computed>
+      availability_zone:                          <computed>
+      ebs_block_device.#:                         <computed>
+      ephemeral_block_device.#:                   <computed>
+      get_password_data:                          "false"
+      instance_state:                             <computed>
+      instance_type:                              "t2.micro"
+      ipv6_address_count:                         <computed>
+      ipv6_addresses.#:                           <computed>
+      key_name:                                   "${var.key_pair}"
+      network_interface.#:                        <computed>
+      network_interface_id:                       <computed>
+      password_data:                              <computed>
+      placement_group:                            <computed>
+      primary_network_interface_id:               <computed>
+      private_dns:                                <computed>
+      private_ip:                                 <computed>
+      public_dns:                                 <computed>
+      public_ip:                                  <computed>
+      root_block_device.#:                        <computed>
+      security_groups.#:                          <computed>
+      source_dest_check:                          "true"
+      subnet_id:                                  "${var.subnetid[count.index]}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-app-vm"
+      tenancy:                                    <computed>
+      volume_tags.%:                              <computed>
+      vpc_security_group_ids.#:                   <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.app_instance.aws_instance.default[1]
+[0m      id:                                         <computed>
+      ami:                                        "ami-a681addf"
+      associate_public_ip_address:                <computed>
+      availability_zone:                          <computed>
+      ebs_block_device.#:                         <computed>
+      ephemeral_block_device.#:                   <computed>
+      get_password_data:                          "false"
+      instance_state:                             <computed>
+      instance_type:                              "t2.micro"
+      ipv6_address_count:                         <computed>
+      ipv6_addresses.#:                           <computed>
+      key_name:                                   "${var.key_pair}"
+      network_interface.#:                        <computed>
+      network_interface_id:                       <computed>
+      password_data:                              <computed>
+      placement_group:                            <computed>
+      primary_network_interface_id:               <computed>
+      private_dns:                                <computed>
+      private_ip:                                 <computed>
+      public_dns:                                 <computed>
+      public_ip:                                  <computed>
+      root_block_device.#:                        <computed>
+      security_groups.#:                          <computed>
+      source_dest_check:                          "true"
+      subnet_id:                                  "${var.subnetid[count.index]}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-app-vm"
+      tenancy:                                    <computed>
+      volume_tags.%:                              <computed>
+      vpc_security_group_ids.#:                   <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.app_subnet.aws_subnet.default[0]
+[0m      id:                                         <computed>
+      assign_ipv6_address_on_creation:            "false"
+      availability_zone:                          "eu-west-1a"
+      cidr_block:                                 "192.168.1.0/24"
+      ipv6_cidr_block:                            <computed>
+      ipv6_cidr_block_association_id:             <computed>
+      map_public_ip_on_launch:                    "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-app_server_subnet-eu-west-1a"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.app_subnet.aws_subnet.default[1]
+[0m      id:                                         <computed>
+      assign_ipv6_address_on_creation:            "false"
+      availability_zone:                          "eu-west-1b"
+      cidr_block:                                 "192.168.2.0/24"
+      ipv6_cidr_block:                            <computed>
+      ipv6_cidr_block_association_id:             <computed>
+      map_public_ip_on_launch:                    "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-app_server_subnet-eu-west-1b"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.db_instance.aws_instance.default[0]
+[0m      id:                                         <computed>
+      ami:                                        "ami-2f8fa356"
+      associate_public_ip_address:                <computed>
+      availability_zone:                          <computed>
+      ebs_block_device.#:                         <computed>
+      ephemeral_block_device.#:                   <computed>
+      get_password_data:                          "false"
+      instance_state:                             <computed>
+      instance_type:                              "t2.micro"
+      ipv6_address_count:                         <computed>
+      ipv6_addresses.#:                           <computed>
+      key_name:                                   "${var.key_pair}"
+      network_interface.#:                        <computed>
+      network_interface_id:                       <computed>
+      password_data:                              <computed>
+      placement_group:                            <computed>
+      primary_network_interface_id:               <computed>
+      private_dns:                                <computed>
+      private_ip:                                 <computed>
+      public_dns:                                 <computed>
+      public_ip:                                  <computed>
+      root_block_device.#:                        <computed>
+      security_groups.#:                          <computed>
+      source_dest_check:                          "true"
+      subnet_id:                                  "${var.subnetid[count.index]}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-db-vm"
+      tenancy:                                    <computed>
+      volume_tags.%:                              <computed>
+      vpc_security_group_ids.#:                   <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.db_instance.aws_instance.default[1]
+[0m      id:                                         <computed>
+      ami:                                        "ami-2f8fa356"
+      associate_public_ip_address:                <computed>
+      availability_zone:                          <computed>
+      ebs_block_device.#:                         <computed>
+      ephemeral_block_device.#:                   <computed>
+      get_password_data:                          "false"
+      instance_state:                             <computed>
+      instance_type:                              "t2.micro"
+      ipv6_address_count:                         <computed>
+      ipv6_addresses.#:                           <computed>
+      key_name:                                   "${var.key_pair}"
+      network_interface.#:                        <computed>
+      network_interface_id:                       <computed>
+      password_data:                              <computed>
+      placement_group:                            <computed>
+      primary_network_interface_id:               <computed>
+      private_dns:                                <computed>
+      private_ip:                                 <computed>
+      public_dns:                                 <computed>
+      public_ip:                                  <computed>
+      root_block_device.#:                        <computed>
+      security_groups.#:                          <computed>
+      source_dest_check:                          "true"
+      subnet_id:                                  "${var.subnetid[count.index]}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-db-vm"
+      tenancy:                                    <computed>
+      volume_tags.%:                              <computed>
+      vpc_security_group_ids.#:                   <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.db_subnet.aws_subnet.default[0]
+[0m      id:                                         <computed>
+      assign_ipv6_address_on_creation:            "false"
+      availability_zone:                          "eu-west-1a"
+      cidr_block:                                 "192.168.201.0/24"
+      ipv6_cidr_block:                            <computed>
+      ipv6_cidr_block_association_id:             <computed>
+      map_public_ip_on_launch:                    "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-db_server_subnet-eu-west-1a"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.db_subnet.aws_subnet.default[1]
+[0m      id:                                         <computed>
+      assign_ipv6_address_on_creation:            "false"
+      availability_zone:                          "eu-west-1b"
+      cidr_block:                                 "192.168.202.0/24"
+      ipv6_cidr_block:                            <computed>
+      ipv6_cidr_block_association_id:             <computed>
+      map_public_ip_on_launch:                    "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-db_server_subnet-eu-west-1b"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.eip.aws_eip.default[0]
+[0m      id:                                         <computed>
+      allocation_id:                              <computed>
+      association_id:                             <computed>
+      domain:                                     <computed>
+      instance:                                   <computed>
+      network_interface:                          <computed>
+      private_ip:                                 <computed>
+      public_ip:                                  <computed>
+      vpc:                                        "true"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.eip.aws_eip.default[1]
+[0m      id:                                         <computed>
+      allocation_id:                              <computed>
+      association_id:                             <computed>
+      domain:                                     <computed>
+      instance:                                   <computed>
+      network_interface:                          <computed>
+      private_ip:                                 <computed>
+      public_ip:                                  <computed>
+      vpc:                                        "true"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.internet_gateway.aws_internet_gateway.default
+[0m      id:                                         <computed>
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-gw"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.internet_gateway.aws_route_table.default
+[0m      id:                                         <computed>
+      propagating_vgws.#:                         <computed>
+      route.#:                                    "1"
+      route.~244149437.cidr_block:                "0.0.0.0/0"
+      route.~244149437.egress_only_gateway_id:    ""
+      route.~244149437.gateway_id:                "${aws_internet_gateway.default.id}"
+      route.~244149437.instance_id:               ""
+      route.~244149437.ipv6_cidr_block:           ""
+      route.~244149437.nat_gateway_id:            ""
+      route.~244149437.network_interface_id:      ""
+      route.~244149437.vpc_peering_connection_id: ""
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-gw"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.keypair.aws_key_pair.default
+[0m      id:                                         <computed>
+      fingerprint:                                <computed>
+      key_name:                                   "gary"
+      public_key:                                 "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSEaOkcmDLXeJ/rYAt5ZHDxlbyuqNSiOJLQ/vabZ0u2C+/XDz5iwHUZYkhomQpaTZ0x2oj9csP1/qxu5wbgKLNSscgNdkU2zWlSM+twMiFD5/bpuDxSOgGXb06kHJK4KdWwEdueX8t9Ch7cjGmBdgsDUvCQ9HydolI1f4T5oC+A47/sxHCBwufzHW3HjBEYNxyKuhJ0x5YjNG7e/EeL2fMiS3YMJRfFyUZjWysNzaTFrfxqT3eusUHZWrmKd0SGsH4YuFtw9IzJV6wi8hG1nKbRBuG6e1OumStna/+cmjMNwqe3ZuoXT8bQQF3HWwbhkUmTKdRNxQq6/bTeCucNtGL gary@Garys-MacBook-Pro.local"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.load_balancer.aws_elb.default
+[0m      id:                                         <computed>
+      arn:                                        <computed>
+      availability_zones.#:                       <computed>
+      connection_draining:                        "true"
+      connection_draining_timeout:                "400"
+      cross_zone_load_balancing:                  "true"
+      dns_name:                                   <computed>
+      health_check.#:                             "1"
+      health_check.0.healthy_threshold:           "2"
+      health_check.0.interval:                    "30"
+      health_check.0.target:                      "HTTP:8000/"
+      health_check.0.timeout:                     "3"
+      health_check.0.unhealthy_threshold:         "2"
+      idle_timeout:                               "400"
+      instances.#:                                <computed>
+      internal:                                   <computed>
+      listener.#:                                 "1"
+      listener.3057123346.instance_port:          "80"
+      listener.3057123346.instance_protocol:      "http"
+      listener.3057123346.lb_port:                "80"
+      listener.3057123346.lb_protocol:            "http"
+      listener.3057123346.ssl_certificate_id:     ""
+      name:                                       "test1-lb"
+      security_groups.#:                          <computed>
+      source_security_group:                      <computed>
+      source_security_group_id:                   <computed>
+      subnets.#:                                  <computed>
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-lb"
+      zone_id:                                    <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[0]
+[0m      id:                                         <computed>
+      allocation_id:                              "${element(var.nat_eip,count.index)}"
+      network_interface_id:                       <computed>
+      private_ip:                                 <computed>
+      public_ip:                                  <computed>
+      subnet_id:                                  "${element(var.subnet_id,count.index)}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-nat-gw"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[1]
+[0m      id:                                         <computed>
+      allocation_id:                              "${element(var.nat_eip,count.index)}"
+      network_interface_id:                       <computed>
+      private_ip:                                 <computed>
+      public_ip:                                  <computed>
+      subnet_id:                                  "${element(var.subnet_id,count.index)}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-nat-gw"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.route_association.aws_route_table_association.a[0]
+[0m      id:                                         <computed>
+      route_table_id:                             "${var.route_id}"
+      subnet_id:                                  "${element(var.subnet_id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.route_association.aws_route_table_association.a[1]
+[0m      id:                                         <computed>
+      route_table_id:                             "${var.route_id}"
+      subnet_id:                                  "${element(var.subnet_id, count.index)}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.security_group.aws_default_vpc.default
+[0m      id:                                         <computed>
+      assign_generated_ipv6_cidr_block:           <computed>
+      cidr_block:                                 <computed>
+      default_network_acl_id:                     <computed>
+      default_route_table_id:                     <computed>
+      default_security_group_id:                  <computed>
+      dhcp_options_id:                            <computed>
+      enable_classiclink:                         <computed>
+      enable_classiclink_dns_support:             <computed>
+      enable_dns_hostnames:                       <computed>
+      enable_dns_support:                         "true"
+      instance_tenancy:                           <computed>
+      ipv6_association_id:                        <computed>
+      ipv6_cidr_block:                            <computed>
+      main_route_table_id:                        <computed>
+      tags.%:                                     "1"
+      tags.Name:                                  "Default VPC"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.security_group.aws_security_group.app
+[0m      id:                                         <computed>
+      arn:                                        <computed>
+      description:                                "Security group applied to appservers"
+      egress.#:                                   <computed>
+      ingress.#:                                  "1"
+      ingress.2214680975.cidr_blocks.#:           "1"
+      ingress.2214680975.cidr_blocks.0:           "0.0.0.0/0"
+      ingress.2214680975.description:             ""
+      ingress.2214680975.from_port:               "80"
+      ingress.2214680975.ipv6_cidr_blocks.#:      "0"
+      ingress.2214680975.protocol:                "tcp"
+      ingress.2214680975.security_groups.#:       "0"
+      ingress.2214680975.self:                    "false"
+      ingress.2214680975.to_port:                 "80"
+      name:                                       "test1-sg-app"
+      owner_id:                                   <computed>
+      revoke_rules_on_delete:                     "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-sg-app"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.security_group.aws_security_group.db
+[0m      id:                                         <computed>
+      arn:                                        <computed>
+      description:                                "Security group applied to dbservers"
+      egress.#:                                   <computed>
+      ingress.#:                                  "1"
+      ingress.1163740523.cidr_blocks.#:           "1"
+      ingress.1163740523.cidr_blocks.0:           "0.0.0.0/0"
+      ingress.1163740523.description:             ""
+      ingress.1163740523.from_port:               "3306"
+      ingress.1163740523.ipv6_cidr_blocks.#:      "0"
+      ingress.1163740523.protocol:                "tcp"
+      ingress.1163740523.security_groups.#:       "0"
+      ingress.1163740523.self:                    "false"
+      ingress.1163740523.to_port:                 "3306"
+      name:                                       "test1-sg-db"
+      owner_id:                                   <computed>
+      revoke_rules_on_delete:                     "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-sg-db"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.security_group.aws_security_group.default
+[0m      id:                                         <computed>
+      arn:                                        <computed>
+      description:                                "Security group applied as default to EC2 Instances"
+      egress.#:                                   "1"
+      egress.482069346.cidr_blocks.#:             "1"
+      egress.482069346.cidr_blocks.0:             "0.0.0.0/0"
+      egress.482069346.description:               ""
+      egress.482069346.from_port:                 "0"
+      egress.482069346.ipv6_cidr_blocks.#:        "0"
+      egress.482069346.prefix_list_ids.#:         "0"
+      egress.482069346.protocol:                  "-1"
+      egress.482069346.security_groups.#:         "0"
+      egress.482069346.self:                      "false"
+      egress.482069346.to_port:                   "0"
+      ingress.#:                                  "2"
+      ingress.1936708796.cidr_blocks.#:           "1"
+      ingress.1936708796.cidr_blocks.0:           "192.168.0.0/16"
+      ingress.1936708796.description:             ""
+      ingress.1936708796.from_port:               "80"
+      ingress.1936708796.ipv6_cidr_blocks.#:      "0"
+      ingress.1936708796.protocol:                "tcp"
+      ingress.1936708796.security_groups.#:       "0"
+      ingress.1936708796.self:                    "false"
+      ingress.1936708796.to_port:                 "80"
+      ingress.2541437006.cidr_blocks.#:           "1"
+      ingress.2541437006.cidr_blocks.0:           "0.0.0.0/0"
+      ingress.2541437006.description:             ""
+      ingress.2541437006.from_port:               "22"
+      ingress.2541437006.ipv6_cidr_blocks.#:      "0"
+      ingress.2541437006.protocol:                "tcp"
+      ingress.2541437006.security_groups.#:       "0"
+      ingress.2541437006.self:                    "false"
+      ingress.2541437006.to_port:                 "22"
+      name:                                       "test1-sg-default"
+      owner_id:                                   <computed>
+      revoke_rules_on_delete:                     "false"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.security_group.aws_security_group.elb
+[0m      id:                                         <computed>
+      arn:                                        <computed>
+      description:                                "Security Group for ELB"
+      egress.#:                                   "1"
+      egress.482069346.cidr_blocks.#:             "1"
+      egress.482069346.cidr_blocks.0:             "0.0.0.0/0"
+      egress.482069346.description:               ""
+      egress.482069346.from_port:                 "0"
+      egress.482069346.ipv6_cidr_blocks.#:        "0"
+      egress.482069346.prefix_list_ids.#:         "0"
+      egress.482069346.protocol:                  "-1"
+      egress.482069346.security_groups.#:         "0"
+      egress.482069346.self:                      "false"
+      egress.482069346.to_port:                   "0"
+      ingress.#:                                  "1"
+      ingress.2214680975.cidr_blocks.#:           "1"
+      ingress.2214680975.cidr_blocks.0:           "0.0.0.0/0"
+      ingress.2214680975.description:             ""
+      ingress.2214680975.from_port:               "80"
+      ingress.2214680975.ipv6_cidr_blocks.#:      "0"
+      ingress.2214680975.protocol:                "tcp"
+      ingress.2214680975.security_groups.#:       "0"
+      ingress.2214680975.self:                    "false"
+      ingress.2214680975.to_port:                 "80"
+      name:                                       "test1-sg-elb"
+      owner_id:                                   <computed>
+      revoke_rules_on_delete:                     "false"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.security_group.aws_security_group.web
+[0m      id:                                         <computed>
+      arn:                                        <computed>
+      description:                                "Security group applied to webservers"
+      egress.#:                                   <computed>
+      ingress.#:                                  "1"
+      ingress.2214680975.cidr_blocks.#:           "1"
+      ingress.2214680975.cidr_blocks.0:           "0.0.0.0/0"
+      ingress.2214680975.description:             ""
+      ingress.2214680975.from_port:               "80"
+      ingress.2214680975.ipv6_cidr_blocks.#:      "0"
+      ingress.2214680975.protocol:                "tcp"
+      ingress.2214680975.security_groups.#:       "0"
+      ingress.2214680975.self:                    "false"
+      ingress.2214680975.to_port:                 "80"
+      name:                                       "test1-sg-web"
+      owner_id:                                   <computed>
+      revoke_rules_on_delete:                     "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-sg-web"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.vpc.aws_vpc.default
+[0m      id:                                         <computed>
+      assign_generated_ipv6_cidr_block:           "false"
+      cidr_block:                                 "192.168.0.0/16"
+      default_network_acl_id:                     <computed>
+      default_route_table_id:                     <computed>
+      default_security_group_id:                  <computed>
+      dhcp_options_id:                            <computed>
+      enable_classiclink:                         "false"
+      enable_classiclink_dns_support:             <computed>
+      enable_dns_hostnames:                       "true"
+      enable_dns_support:                         "true"
+      instance_tenancy:                           <computed>
+      ipv6_association_id:                        <computed>
+      ipv6_cidr_block:                            <computed>
+      main_route_table_id:                        <computed>
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-vpc"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.web_instance.aws_instance.default[0]
+[0m      id:                                         <computed>
+      ami:                                        "ami-be81adc7"
+      associate_public_ip_address:                <computed>
+      availability_zone:                          <computed>
+      ebs_block_device.#:                         <computed>
+      ephemeral_block_device.#:                   <computed>
+      get_password_data:                          "false"
+      instance_state:                             <computed>
+      instance_type:                              "t2.micro"
+      ipv6_address_count:                         <computed>
+      ipv6_addresses.#:                           <computed>
+      key_name:                                   "${var.key_pair}"
+      network_interface.#:                        <computed>
+      network_interface_id:                       <computed>
+      password_data:                              <computed>
+      placement_group:                            <computed>
+      primary_network_interface_id:               <computed>
+      private_dns:                                <computed>
+      private_ip:                                 <computed>
+      public_dns:                                 <computed>
+      public_ip:                                  <computed>
+      root_block_device.#:                        <computed>
+      security_groups.#:                          <computed>
+      source_dest_check:                          "true"
+      subnet_id:                                  "${var.subnetid[count.index]}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-web-vm"
+      tenancy:                                    <computed>
+      volume_tags.%:                              <computed>
+      vpc_security_group_ids.#:                   <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.web_instance.aws_instance.default[1]
+[0m      id:                                         <computed>
+      ami:                                        "ami-be81adc7"
+      associate_public_ip_address:                <computed>
+      availability_zone:                          <computed>
+      ebs_block_device.#:                         <computed>
+      ephemeral_block_device.#:                   <computed>
+      get_password_data:                          "false"
+      instance_state:                             <computed>
+      instance_type:                              "t2.micro"
+      ipv6_address_count:                         <computed>
+      ipv6_addresses.#:                           <computed>
+      key_name:                                   "${var.key_pair}"
+      network_interface.#:                        <computed>
+      network_interface_id:                       <computed>
+      password_data:                              <computed>
+      placement_group:                            <computed>
+      primary_network_interface_id:               <computed>
+      private_dns:                                <computed>
+      private_ip:                                 <computed>
+      public_dns:                                 <computed>
+      public_ip:                                  <computed>
+      root_block_device.#:                        <computed>
+      security_groups.#:                          <computed>
+      source_dest_check:                          "true"
+      subnet_id:                                  "${var.subnetid[count.index]}"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-web-vm"
+      tenancy:                                    <computed>
+      volume_tags.%:                              <computed>
+      vpc_security_group_ids.#:                   <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.web_subnet.aws_subnet.default[0]
+[0m      id:                                         <computed>
+      assign_ipv6_address_on_creation:            "false"
+      availability_zone:                          "eu-west-1a"
+      cidr_block:                                 "192.168.101.0/24"
+      ipv6_cidr_block:                            <computed>
+      ipv6_cidr_block_association_id:             <computed>
+      map_public_ip_on_launch:                    "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-web_server_subnet-eu-west-1a"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.runtime.module.web_subnet.aws_subnet.default[1]
+[0m      id:                                         <computed>
+      assign_ipv6_address_on_creation:            "false"
+      availability_zone:                          "eu-west-1b"
+      cidr_block:                                 "192.168.102.0/24"
+      ipv6_cidr_block:                            <computed>
+      ipv6_cidr_block_association_id:             <computed>
+      map_public_ip_on_launch:                    "false"
+      tags.%:                                     "1"
+      tags.Name:                                  "test1-web_server_subnet-eu-west-1b"
+      vpc_id:                                     "${var.vpc_id}"
+[0m
+[0m[32m  [32m+[0m [32mmodule.state.module.db_bucket.aws_s3_bucket.default
+[0m      id:                                         <computed>
+      acceleration_status:                        <computed>
+      acl:                                        "private"
+      arn:                                        <computed>
+      bucket:                                     "test1-database"
+      bucket_domain_name:                         <computed>
+      force_destroy:                              "false"
+      hosted_zone_id:                             <computed>
+      region:                                     <computed>
+      request_payer:                              <computed>
+      versioning.#:                               <computed>
+      website_domain:                             <computed>
+      website_endpoint:                           <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.state.module.db_bucket.aws_s3_bucket_policy.default
+[0m      id:                                         <computed>
+      bucket:                                     "${aws_s3_bucket.default.id}"
+      policy:                                     "{\n  \"Version\": \"2012-10-17\",\n  \"Id\": \"bucket_policy_log\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::test1-database/*\"\n    } \n  ]\n}\n"
+[0m
+[0m[32m  [32m+[0m [32mmodule.state.module.eip.aws_eip.default[0]
+[0m      id:                                         <computed>
+      allocation_id:                              <computed>
+      association_id:                             <computed>
+      domain:                                     <computed>
+      instance:                                   <computed>
+      network_interface:                          <computed>
+      private_ip:                                 <computed>
+      public_ip:                                  <computed>
+      vpc:                                        "true"
+[0m
+[0m[32m  [32m+[0m [32mmodule.state.module.eip.aws_eip.default[1]
+[0m      id:                                         <computed>
+      allocation_id:                              <computed>
+      association_id:                             <computed>
+      domain:                                     <computed>
+      instance:                                   <computed>
+      network_interface:                          <computed>
+      private_ip:                                 <computed>
+      public_ip:                                  <computed>
+      vpc:                                        "true"
+[0m
+[0m[32m  [32m+[0m [32mmodule.state.module.logs_bucket.aws_s3_bucket.default
+[0m      id:                                         <computed>
+      acceleration_status:                        <computed>
+      acl:                                        "private"
+      arn:                                        <computed>
+      bucket:                                     "test1-access-logs"
+      bucket_domain_name:                         <computed>
+      force_destroy:                              "false"
+      hosted_zone_id:                             <computed>
+      region:                                     <computed>
+      request_payer:                              <computed>
+      versioning.#:                               <computed>
+      website_domain:                             <computed>
+      website_endpoint:                           <computed>
+[0m
+[0m[32m  [32m+[0m [32mmodule.state.module.logs_bucket.aws_s3_bucket_policy.default
+[0m      id:                                         <computed>
+      bucket:                                     "${aws_s3_bucket.default.id}"
+      policy:                                     "{\n  \"Version\": \"2012-10-17\",\n  \"Id\": \"bucket_policy_log\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::test1-access-logs/*\"\n    } \n  ]\n}\n"
+[0m
+[0m
+[0m[1mPlan:[0m 35 to add, 0 to change, 0 to destroy.[0m
+
+------------------------------------------------------------------------
+
+Note: You didn't specify an "-out" parameter to save this plan, so Terraform
+can't guarantee that exactly these actions will be performed if
+"terraform apply" is subsequently run.
+
+terraform apply -var-file ../terraform.tfvars -auto-approve 
+[0m[1mmodule.state.module.eip.aws_eip.default[1]: Creating...[0m
+  allocation_id:     "" => "<computed>"
+  association_id:    "" => "<computed>"
+  domain:            "" => "<computed>"
+  instance:          "" => "<computed>"
+  network_interface: "" => "<computed>"
+  private_ip:        "" => "<computed>"
+  public_ip:         "" => "<computed>"
+  vpc:               "" => "true"[0m
+[0m[1mmodule.runtime.module.vpc.aws_vpc.default: Creating...[0m
+  assign_generated_ipv6_cidr_block: "" => "false"
+  cidr_block:                       "" => "192.168.0.0/16"
+  default_network_acl_id:           "" => "<computed>"
+  default_route_table_id:           "" => "<computed>"
+  default_security_group_id:        "" => "<computed>"
+  dhcp_options_id:                  "" => "<computed>"
+  enable_classiclink:               "" => "false"
+  enable_classiclink_dns_support:   "" => "<computed>"
+  enable_dns_hostnames:             "" => "true"
+  enable_dns_support:               "" => "true"
+  instance_tenancy:                 "" => "<computed>"
+  ipv6_association_id:              "" => "<computed>"
+  ipv6_cidr_block:                  "" => "<computed>"
+  main_route_table_id:              "" => "<computed>"
+  tags.%:                           "" => "1"
+  tags.Name:                        "" => "test1-vpc"[0m
+[0m[1mmodule.runtime.module.security_group.aws_default_vpc.default: Creating...[0m
+  assign_generated_ipv6_cidr_block: "" => "<computed>"
+  cidr_block:                       "" => "<computed>"
+  default_network_acl_id:           "" => "<computed>"
+  default_route_table_id:           "" => "<computed>"
+  default_security_group_id:        "" => "<computed>"
+  dhcp_options_id:                  "" => "<computed>"
+  enable_classiclink:               "" => "<computed>"
+  enable_classiclink_dns_support:   "" => "<computed>"
+  enable_dns_hostnames:             "" => "<computed>"
+  enable_dns_support:               "" => "true"
+  instance_tenancy:                 "" => "<computed>"
+  ipv6_association_id:              "" => "<computed>"
+  ipv6_cidr_block:                  "" => "<computed>"
+  main_route_table_id:              "" => "<computed>"
+  tags.%:                           "0" => "1"
+  tags.Name:                        "" => "Default VPC"[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket.default: Creating...[0m
+  acceleration_status: "" => "<computed>"
+  acl:                 "" => "private"
+  arn:                 "" => "<computed>"
+  bucket:              "" => "test1-access-logs"
+  bucket_domain_name:  "" => "<computed>"
+  force_destroy:       "" => "false"
+  hosted_zone_id:      "" => "<computed>"
+  region:              "" => "<computed>"
+  request_payer:       "" => "<computed>"
+  versioning.#:        "" => "<computed>"
+  website_domain:      "" => "<computed>"
+  website_endpoint:    "" => "<computed>"[0m
+[0m[1mmodule.runtime.module.keypair.aws_key_pair.default: Creating...[0m
+  fingerprint: "" => "<computed>"
+  key_name:    "" => "gary"
+  public_key:  "" => "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDSEaOkcmDLXeJ/rYAt5ZHDxlbyuqNSiOJLQ/vabZ0u2C+/XDz5iwHUZYkhomQpaTZ0x2oj9csP1/qxu5wbgKLNSscgNdkU2zWlSM+twMiFD5/bpuDxSOgGXb06kHJK4KdWwEdueX8t9Ch7cjGmBdgsDUvCQ9HydolI1f4T5oC+A47/sxHCBwufzHW3HjBEYNxyKuhJ0x5YjNG7e/EeL2fMiS3YMJRfFyUZjWysNzaTFrfxqT3eusUHZWrmKd0SGsH4YuFtw9IzJV6wi8hG1nKbRBuG6e1OumStna/+cmjMNwqe3ZuoXT8bQQF3HWwbhkUmTKdRNxQq6/bTeCucNtGL gary@Garys-MacBook-Pro.local"[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[0]: Creating...[0m
+  allocation_id:     "" => "<computed>"
+  association_id:    "" => "<computed>"
+  domain:            "" => "<computed>"
+  instance:          "" => "<computed>"
+  network_interface: "" => "<computed>"
+  private_ip:        "" => "<computed>"
+  public_ip:         "" => "<computed>"
+  vpc:               "" => "true"[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket.default: Creating...[0m
+  acceleration_status: "" => "<computed>"
+  acl:                 "" => "private"
+  arn:                 "" => "<computed>"
+  bucket:              "" => "test1-database"
+  bucket_domain_name:  "" => "<computed>"
+  force_destroy:       "" => "false"
+  hosted_zone_id:      "" => "<computed>"
+  region:              "" => "<computed>"
+  request_payer:       "" => "<computed>"
+  versioning.#:        "" => "<computed>"
+  website_domain:      "" => "<computed>"
+  website_endpoint:    "" => "<computed>"[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[1]: Creating...[0m
+  allocation_id:     "" => "<computed>"
+  association_id:    "" => "<computed>"
+  domain:            "" => "<computed>"
+  instance:          "" => "<computed>"
+  network_interface: "" => "<computed>"
+  private_ip:        "" => "<computed>"
+  public_ip:         "" => "<computed>"
+  vpc:               "" => "true"[0m
+[0m[1mmodule.state.module.eip.aws_eip.default[0]: Creating...[0m
+  allocation_id:     "" => "<computed>"
+  association_id:    "" => "<computed>"
+  domain:            "" => "<computed>"
+  instance:          "" => "<computed>"
+  network_interface: "" => "<computed>"
+  private_ip:        "" => "<computed>"
+  public_ip:         "" => "<computed>"
+  vpc:               "" => "true"[0m
+[0m[1mmodule.runtime.module.keypair.aws_key_pair.default: Creation complete after 0s (ID: gary)[0m[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[1]: Creation complete after 0s (ID: eipalloc-03be5a72e06a01e3f)[0m[0m
+[0m[1mmodule.state.module.eip.aws_eip.default[1]: Creation complete after 0s (ID: eipalloc-07f8e47c80699e356)[0m[0m
+[0m[1mmodule.runtime.module.eip.aws_eip.default[0]: Creation complete after 0s (ID: eipalloc-0afa8bd41ab542f4e)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_default_vpc.default: Creation complete after 2s (ID: vpc-0f655c54af3e49884)[0m[0m
+[0m[1mmodule.runtime.module.vpc.aws_vpc.default: Creation complete after 2s (ID: vpc-06776377441ff4a9f)[0m[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[1]: Creating...[0m
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "eu-west-1b"
+  cidr_block:                      "" => "192.168.2.0/24"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  tags.%:                          "" => "1"
+  tags.Name:                       "" => "test1-app_server_subnet-eu-west-1b"
+  vpc_id:                          "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[0]: Creating...[0m
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "eu-west-1a"
+  cidr_block:                      "" => "192.168.201.0/24"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  tags.%:                          "" => "1"
+  tags.Name:                       "" => "test1-db_server_subnet-eu-west-1a"
+  vpc_id:                          "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_internet_gateway.default: Creating...[0m
+  tags.%:    "0" => "1"
+  tags.Name: "" => "test1-gw"
+  vpc_id:    "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[0]: Creating...[0m
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "eu-west-1a"
+  cidr_block:                      "" => "192.168.1.0/24"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  tags.%:                          "" => "1"
+  tags.Name:                       "" => "test1-app_server_subnet-eu-west-1a"
+  vpc_id:                          "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[1]: Creating...[0m
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "eu-west-1b"
+  cidr_block:                      "" => "192.168.202.0/24"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  tags.%:                          "" => "1"
+  tags.Name:                       "" => "test1-db_server_subnet-eu-west-1b"
+  vpc_id:                          "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.db: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Security group applied to dbservers"
+  egress.#:                              "" => "<computed>"
+  ingress.#:                             "" => "1"
+  ingress.1163740523.cidr_blocks.#:      "" => "1"
+  ingress.1163740523.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.1163740523.description:        "" => ""
+  ingress.1163740523.from_port:          "" => "3306"
+  ingress.1163740523.ipv6_cidr_blocks.#: "" => "0"
+  ingress.1163740523.protocol:           "" => "tcp"
+  ingress.1163740523.security_groups.#:  "" => "0"
+  ingress.1163740523.self:               "" => "false"
+  ingress.1163740523.to_port:            "" => "3306"
+  name:                                  "" => "test1-sg-db"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  tags.%:                                "" => "1"
+  tags.Name:                             "" => "test1-sg-db"
+  vpc_id:                                "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.web: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Security group applied to webservers"
+  egress.#:                              "" => "<computed>"
+  ingress.#:                             "" => "1"
+  ingress.2214680975.cidr_blocks.#:      "" => "1"
+  ingress.2214680975.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.2214680975.description:        "" => ""
+  ingress.2214680975.from_port:          "" => "80"
+  ingress.2214680975.ipv6_cidr_blocks.#: "" => "0"
+  ingress.2214680975.protocol:           "" => "tcp"
+  ingress.2214680975.security_groups.#:  "" => "0"
+  ingress.2214680975.self:               "" => "false"
+  ingress.2214680975.to_port:            "" => "80"
+  name:                                  "" => "test1-sg-web"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  tags.%:                                "" => "1"
+  tags.Name:                             "" => "test1-sg-web"
+  vpc_id:                                "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.default: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Security group applied as default to EC2 Instances"
+  egress.#:                              "" => "1"
+  egress.482069346.cidr_blocks.#:        "" => "1"
+  egress.482069346.cidr_blocks.0:        "" => "0.0.0.0/0"
+  egress.482069346.description:          "" => ""
+  egress.482069346.from_port:            "" => "0"
+  egress.482069346.ipv6_cidr_blocks.#:   "" => "0"
+  egress.482069346.prefix_list_ids.#:    "" => "0"
+  egress.482069346.protocol:             "" => "-1"
+  egress.482069346.security_groups.#:    "" => "0"
+  egress.482069346.self:                 "" => "false"
+  egress.482069346.to_port:              "" => "0"
+  ingress.#:                             "" => "2"
+  ingress.1936708796.cidr_blocks.#:      "" => "1"
+  ingress.1936708796.cidr_blocks.0:      "" => "192.168.0.0/16"
+  ingress.1936708796.description:        "" => ""
+  ingress.1936708796.from_port:          "" => "80"
+  ingress.1936708796.ipv6_cidr_blocks.#: "" => "0"
+  ingress.1936708796.protocol:           "" => "tcp"
+  ingress.1936708796.security_groups.#:  "" => "0"
+  ingress.1936708796.self:               "" => "false"
+  ingress.1936708796.to_port:            "" => "80"
+  ingress.2541437006.cidr_blocks.#:      "" => "1"
+  ingress.2541437006.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.2541437006.description:        "" => ""
+  ingress.2541437006.from_port:          "" => "22"
+  ingress.2541437006.ipv6_cidr_blocks.#: "" => "0"
+  ingress.2541437006.protocol:           "" => "tcp"
+  ingress.2541437006.security_groups.#:  "" => "0"
+  ingress.2541437006.self:               "" => "false"
+  ingress.2541437006.to_port:            "" => "22"
+  name:                                  "" => "test1-sg-default"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  vpc_id:                                "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket.default: Creation complete after 3s (ID: test1-access-logs)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.elb: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Security Group for ELB"
+  egress.#:                              "" => "1"
+  egress.482069346.cidr_blocks.#:        "" => "1"
+  egress.482069346.cidr_blocks.0:        "" => "0.0.0.0/0"
+  egress.482069346.description:          "" => ""
+  egress.482069346.from_port:            "" => "0"
+  egress.482069346.ipv6_cidr_blocks.#:   "" => "0"
+  egress.482069346.prefix_list_ids.#:    "" => "0"
+  egress.482069346.protocol:             "" => "-1"
+  egress.482069346.security_groups.#:    "" => "0"
+  egress.482069346.self:                 "" => "false"
+  egress.482069346.to_port:              "" => "0"
+  ingress.#:                             "" => "1"
+  ingress.2214680975.cidr_blocks.#:      "" => "1"
+  ingress.2214680975.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.2214680975.description:        "" => ""
+  ingress.2214680975.from_port:          "" => "80"
+  ingress.2214680975.ipv6_cidr_blocks.#: "" => "0"
+  ingress.2214680975.protocol:           "" => "tcp"
+  ingress.2214680975.security_groups.#:  "" => "0"
+  ingress.2214680975.self:               "" => "false"
+  ingress.2214680975.to_port:            "" => "80"
+  name:                                  "" => "test1-sg-elb"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  vpc_id:                                "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_internet_gateway.default: Creation complete after 1s (ID: igw-00e84620adbe0c648)[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[0]: Creating...[0m
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "eu-west-1a"
+  cidr_block:                      "" => "192.168.101.0/24"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  tags.%:                          "" => "1"
+  tags.Name:                       "" => "test1-web_server_subnet-eu-west-1a"
+  vpc_id:                          "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[1]: Creation complete after 1s (ID: subnet-0f4b3f60e2a489f8d)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.app: Creating...[0m
+  arn:                                   "" => "<computed>"
+  description:                           "" => "Security group applied to appservers"
+  egress.#:                              "" => "<computed>"
+  ingress.#:                             "" => "1"
+  ingress.2214680975.cidr_blocks.#:      "" => "1"
+  ingress.2214680975.cidr_blocks.0:      "" => "0.0.0.0/0"
+  ingress.2214680975.description:        "" => ""
+  ingress.2214680975.from_port:          "" => "80"
+  ingress.2214680975.ipv6_cidr_blocks.#: "" => "0"
+  ingress.2214680975.protocol:           "" => "tcp"
+  ingress.2214680975.security_groups.#:  "" => "0"
+  ingress.2214680975.self:               "" => "false"
+  ingress.2214680975.to_port:            "" => "80"
+  name:                                  "" => "test1-sg-app"
+  owner_id:                              "" => "<computed>"
+  revoke_rules_on_delete:                "" => "false"
+  tags.%:                                "" => "1"
+  tags.Name:                             "" => "test1-sg-app"
+  vpc_id:                                "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[1]: Creation complete after 1s (ID: subnet-056ac9777bae1f0b8)[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[1]: Creating...[0m
+  assign_ipv6_address_on_creation: "" => "false"
+  availability_zone:               "" => "eu-west-1b"
+  cidr_block:                      "" => "192.168.102.0/24"
+  ipv6_cidr_block:                 "" => "<computed>"
+  ipv6_cidr_block_association_id:  "" => "<computed>"
+  map_public_ip_on_launch:         "" => "false"
+  tags.%:                          "" => "1"
+  tags.Name:                       "" => "test1-web_server_subnet-eu-west-1b"
+  vpc_id:                          "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.runtime.module.db_subnet.aws_subnet.default[0]: Creation complete after 1s (ID: subnet-0a85e00edec121112)[0m[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket_policy.default: Creating...[0m
+  bucket: "" => "test1-access-logs"
+  policy: "" => "{\n  \"Version\": \"2012-10-17\",\n  \"Id\": \"bucket_policy_log\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::test1-access-logs/*\"\n    } \n  ]\n}\n"[0m
+[0m[1mmodule.runtime.module.app_subnet.aws_subnet.default[0]: Creation complete after 1s (ID: subnet-04ee051d795d2e442)[0m[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_route_table.default: Creating...[0m
+  propagating_vgws.#:                         "" => "<computed>"
+  route.#:                                    "" => "1"
+  route.3060011685.cidr_block:                "" => "0.0.0.0/0"
+  route.3060011685.egress_only_gateway_id:    "" => ""
+  route.3060011685.gateway_id:                "" => "igw-00e84620adbe0c648"
+  route.3060011685.instance_id:               "" => ""
+  route.3060011685.ipv6_cidr_block:           "" => ""
+  route.3060011685.nat_gateway_id:            "" => ""
+  route.3060011685.network_interface_id:      "" => ""
+  route.3060011685.vpc_peering_connection_id: "" => ""
+  tags.%:                                     "" => "1"
+  tags.Name:                                  "" => "test1-gw"
+  vpc_id:                                     "" => "vpc-06776377441ff4a9f"[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket.default: Creation complete after 3s (ID: test1-database)[0m[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket_policy.default: Creating...[0m
+  bucket: "" => "test1-database"
+  policy: "" => "{\n  \"Version\": \"2012-10-17\",\n  \"Id\": \"bucket_policy_log\",\n  \"Statement\": [\n    {\n      \"Effect\": \"Allow\",\n      \"Principal\": \"*\",\n      \"Action\": \"s3:*\",\n      \"Resource\": \"arn:aws:s3:::test1-database/*\"\n    } \n  ]\n}\n"[0m
+[0m[1mmodule.state.module.logs_bucket.aws_s3_bucket_policy.default: Creation complete after 1s (ID: test1-access-logs)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.web: Creation complete after 2s (ID: sg-0a294d99aef7a4ed0)[0m[0m
+[0m[1mmodule.state.module.db_bucket.aws_s3_bucket_policy.default: Creation complete after 1s (ID: test1-database)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.db: Creation complete after 2s (ID: sg-0bf8be08f7d01b1e6)[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[0]: Creation complete after 1s (ID: subnet-07ce39ab89ea325b6)[0m[0m
+[0m[1mmodule.runtime.module.web_subnet.aws_subnet.default[1]: Creation complete after 1s (ID: subnet-0301297ddcfdbba45)[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[1]: Creating...[0m
+  allocation_id:        "" => "eipalloc-03be5a72e06a01e3f"
+  network_interface_id: "" => "<computed>"
+  private_ip:           "" => "<computed>"
+  public_ip:            "" => "<computed>"
+  subnet_id:            "" => "subnet-0301297ddcfdbba45"
+  tags.%:               "" => "1"
+  tags.Name:            "" => "test1-nat-gw"[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[0]: Creating...[0m
+  allocation_id:        "" => "eipalloc-0afa8bd41ab542f4e"
+  network_interface_id: "" => "<computed>"
+  private_ip:           "" => "<computed>"
+  public_ip:            "" => "<computed>"
+  subnet_id:            "" => "subnet-07ce39ab89ea325b6"
+  tags.%:               "" => "1"
+  tags.Name:            "" => "test1-nat-gw"[0m
+[0m[1mmodule.runtime.module.internet_gateway.aws_route_table.default: Creation complete after 1s (ID: rtb-0c3257d43f815ffde)[0m[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[0]: Creating...[0m
+  route_table_id: "" => "rtb-0c3257d43f815ffde"
+  subnet_id:      "" => "subnet-07ce39ab89ea325b6"[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[1]: Creating...[0m
+  route_table_id: "" => "rtb-0c3257d43f815ffde"
+  subnet_id:      "" => "subnet-0301297ddcfdbba45"[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.default: Creation complete after 2s (ID: sg-06e66877d52209da3)[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[0]: Creating...[0m
+  ami:                               "" => "ami-2f8fa356"
+  associate_public_ip_address:       "" => "<computed>"
+  availability_zone:                 "" => "<computed>"
+  ebs_block_device.#:                "" => "<computed>"
+  ephemeral_block_device.#:          "" => "<computed>"
+  get_password_data:                 "" => "false"
+  instance_state:                    "" => "<computed>"
+  instance_type:                     "" => "t2.micro"
+  ipv6_address_count:                "" => "<computed>"
+  ipv6_addresses.#:                  "" => "<computed>"
+  key_name:                          "" => "gary"
+  network_interface.#:               "" => "<computed>"
+  network_interface_id:              "" => "<computed>"
+  password_data:                     "" => "<computed>"
+  placement_group:                   "" => "<computed>"
+  primary_network_interface_id:      "" => "<computed>"
+  private_dns:                       "" => "<computed>"
+  private_ip:                        "" => "<computed>"
+  public_dns:                        "" => "<computed>"
+  public_ip:                         "" => "<computed>"
+  root_block_device.#:               "" => "<computed>"
+  security_groups.#:                 "" => "<computed>"
+  source_dest_check:                 "" => "true"
+  subnet_id:                         "" => "subnet-0a85e00edec121112"
+  tags.%:                            "" => "1"
+  tags.Name:                         "" => "test1-db-vm"
+  tenancy:                           "" => "<computed>"
+  volume_tags.%:                     "" => "<computed>"
+  vpc_security_group_ids.#:          "" => "2"
+  vpc_security_group_ids.2113332514: "" => "sg-06e66877d52209da3"
+  vpc_security_group_ids.917256333:  "" => "sg-0bf8be08f7d01b1e6"[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[0]: Creating...[0m
+  ami:                               "" => "ami-be81adc7"
+  associate_public_ip_address:       "" => "<computed>"
+  availability_zone:                 "" => "<computed>"
+  ebs_block_device.#:                "" => "<computed>"
+  ephemeral_block_device.#:          "" => "<computed>"
+  get_password_data:                 "" => "false"
+  instance_state:                    "" => "<computed>"
+  instance_type:                     "" => "t2.micro"
+  ipv6_address_count:                "" => "<computed>"
+  ipv6_addresses.#:                  "" => "<computed>"
+  key_name:                          "" => "gary"
+  network_interface.#:               "" => "<computed>"
+  network_interface_id:              "" => "<computed>"
+  password_data:                     "" => "<computed>"
+  placement_group:                   "" => "<computed>"
+  primary_network_interface_id:      "" => "<computed>"
+  private_dns:                       "" => "<computed>"
+  private_ip:                        "" => "<computed>"
+  public_dns:                        "" => "<computed>"
+  public_ip:                         "" => "<computed>"
+  root_block_device.#:               "" => "<computed>"
+  security_groups.#:                 "" => "<computed>"
+  source_dest_check:                 "" => "true"
+  subnet_id:                         "" => "subnet-07ce39ab89ea325b6"
+  tags.%:                            "" => "1"
+  tags.Name:                         "" => "test1-web-vm"
+  tenancy:                           "" => "<computed>"
+  volume_tags.%:                     "" => "<computed>"
+  vpc_security_group_ids.#:          "" => "2"
+  vpc_security_group_ids.2113332514: "" => "sg-06e66877d52209da3"
+  vpc_security_group_ids.2492147822: "" => "sg-0a294d99aef7a4ed0"[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[1]: Creating...[0m
+  ami:                               "" => "ami-2f8fa356"
+  associate_public_ip_address:       "" => "<computed>"
+  availability_zone:                 "" => "<computed>"
+  ebs_block_device.#:                "" => "<computed>"
+  ephemeral_block_device.#:          "" => "<computed>"
+  get_password_data:                 "" => "false"
+  instance_state:                    "" => "<computed>"
+  instance_type:                     "" => "t2.micro"
+  ipv6_address_count:                "" => "<computed>"
+  ipv6_addresses.#:                  "" => "<computed>"
+  key_name:                          "" => "gary"
+  network_interface.#:               "" => "<computed>"
+  network_interface_id:              "" => "<computed>"
+  password_data:                     "" => "<computed>"
+  placement_group:                   "" => "<computed>"
+  primary_network_interface_id:      "" => "<computed>"
+  private_dns:                       "" => "<computed>"
+  private_ip:                        "" => "<computed>"
+  public_dns:                        "" => "<computed>"
+  public_ip:                         "" => "<computed>"
+  root_block_device.#:               "" => "<computed>"
+  security_groups.#:                 "" => "<computed>"
+  source_dest_check:                 "" => "true"
+  subnet_id:                         "" => "subnet-0f4b3f60e2a489f8d"
+  tags.%:                            "" => "1"
+  tags.Name:                         "" => "test1-db-vm"
+  tenancy:                           "" => "<computed>"
+  volume_tags.%:                     "" => "<computed>"
+  vpc_security_group_ids.#:          "" => "2"
+  vpc_security_group_ids.2113332514: "" => "sg-06e66877d52209da3"
+  vpc_security_group_ids.917256333:  "" => "sg-0bf8be08f7d01b1e6"[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[1]: Creating...[0m
+  ami:                               "" => "ami-be81adc7"
+  associate_public_ip_address:       "" => "<computed>"
+  availability_zone:                 "" => "<computed>"
+  ebs_block_device.#:                "" => "<computed>"
+  ephemeral_block_device.#:          "" => "<computed>"
+  get_password_data:                 "" => "false"
+  instance_state:                    "" => "<computed>"
+  instance_type:                     "" => "t2.micro"
+  ipv6_address_count:                "" => "<computed>"
+  ipv6_addresses.#:                  "" => "<computed>"
+  key_name:                          "" => "gary"
+  network_interface.#:               "" => "<computed>"
+  network_interface_id:              "" => "<computed>"
+  password_data:                     "" => "<computed>"
+  placement_group:                   "" => "<computed>"
+  primary_network_interface_id:      "" => "<computed>"
+  private_dns:                       "" => "<computed>"
+  private_ip:                        "" => "<computed>"
+  public_dns:                        "" => "<computed>"
+  public_ip:                         "" => "<computed>"
+  root_block_device.#:               "" => "<computed>"
+  security_groups.#:                 "" => "<computed>"
+  source_dest_check:                 "" => "true"
+  subnet_id:                         "" => "subnet-0301297ddcfdbba45"
+  tags.%:                            "" => "1"
+  tags.Name:                         "" => "test1-web-vm"
+  tenancy:                           "" => "<computed>"
+  volume_tags.%:                     "" => "<computed>"
+  vpc_security_group_ids.#:          "" => "2"
+  vpc_security_group_ids.2113332514: "" => "sg-06e66877d52209da3"
+  vpc_security_group_ids.2492147822: "" => "sg-0a294d99aef7a4ed0"[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[1]: Creation complete after 0s (ID: rtbassoc-06ab5d66b89ebdb92)[0m[0m
+[0m[1mmodule.runtime.module.route_association.aws_route_table_association.a[0]: Creation complete after 0s (ID: rtbassoc-03de95c8df4d8aa30)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.elb: Creation complete after 1s (ID: sg-09dd78bc541284810)[0m[0m
+[0m[1mmodule.runtime.module.security_group.aws_security_group.app: Creation complete after 2s (ID: sg-0c1537a142363086c)[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[1]: Creating...[0m
+  ami:                               "" => "ami-a681addf"
+  associate_public_ip_address:       "" => "<computed>"
+  availability_zone:                 "" => "<computed>"
+  ebs_block_device.#:                "" => "<computed>"
+  ephemeral_block_device.#:          "" => "<computed>"
+  get_password_data:                 "" => "false"
+  instance_state:                    "" => "<computed>"
+  instance_type:                     "" => "t2.micro"
+  ipv6_address_count:                "" => "<computed>"
+  ipv6_addresses.#:                  "" => "<computed>"
+  key_name:                          "" => "gary"
+  network_interface.#:               "" => "<computed>"
+  network_interface_id:              "" => "<computed>"
+  password_data:                     "" => "<computed>"
+  placement_group:                   "" => "<computed>"
+  primary_network_interface_id:      "" => "<computed>"
+  private_dns:                       "" => "<computed>"
+  private_ip:                        "" => "<computed>"
+  public_dns:                        "" => "<computed>"
+  public_ip:                         "" => "<computed>"
+  root_block_device.#:               "" => "<computed>"
+  security_groups.#:                 "" => "<computed>"
+  source_dest_check:                 "" => "true"
+  subnet_id:                         "" => "subnet-056ac9777bae1f0b8"
+  tags.%:                            "" => "1"
+  tags.Name:                         "" => "test1-app-vm"
+  tenancy:                           "" => "<computed>"
+  volume_tags.%:                     "" => "<computed>"
+  vpc_security_group_ids.#:          "" => "2"
+  vpc_security_group_ids.2113332514: "" => "sg-06e66877d52209da3"
+  vpc_security_group_ids.3241305788: "" => "sg-0c1537a142363086c"[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[0]: Creating...[0m
+  ami:                               "" => "ami-a681addf"
+  associate_public_ip_address:       "" => "<computed>"
+  availability_zone:                 "" => "<computed>"
+  ebs_block_device.#:                "" => "<computed>"
+  ephemeral_block_device.#:          "" => "<computed>"
+  get_password_data:                 "" => "false"
+  instance_state:                    "" => "<computed>"
+  instance_type:                     "" => "t2.micro"
+  ipv6_address_count:                "" => "<computed>"
+  ipv6_addresses.#:                  "" => "<computed>"
+  key_name:                          "" => "gary"
+  network_interface.#:               "" => "<computed>"
+  network_interface_id:              "" => "<computed>"
+  password_data:                     "" => "<computed>"
+  placement_group:                   "" => "<computed>"
+  primary_network_interface_id:      "" => "<computed>"
+  private_dns:                       "" => "<computed>"
+  private_ip:                        "" => "<computed>"
+  public_dns:                        "" => "<computed>"
+  public_ip:                         "" => "<computed>"
+  root_block_device.#:               "" => "<computed>"
+  security_groups.#:                 "" => "<computed>"
+  source_dest_check:                 "" => "true"
+  subnet_id:                         "" => "subnet-04ee051d795d2e442"
+  tags.%:                            "" => "1"
+  tags.Name:                         "" => "test1-app-vm"
+  tenancy:                           "" => "<computed>"
+  volume_tags.%:                     "" => "<computed>"
+  vpc_security_group_ids.#:          "" => "2"
+  vpc_security_group_ids.2113332514: "" => "sg-06e66877d52209da3"
+  vpc_security_group_ids.3241305788: "" => "sg-0c1537a142363086c"[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still creating... (10s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.1: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.1: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.db_instance.aws_instance.default.0: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.0: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.app_instance.aws_instance.default.1: Still creating... (20s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[1]: Creation complete after 22s (ID: i-0be7e2d8a50bea485)[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[0]: Creation complete after 22s (ID: i-0764fe60caee661da)[0m[0m
+[0m[1mmodule.runtime.module.db_instance.aws_instance.default[1]: Creation complete after 22s (ID: i-0d7d057a966ab4258)[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[1]: Creation complete after 22s (ID: i-09020c257606902b4)[0m[0m
+[0m[1mmodule.runtime.module.app_instance.aws_instance.default[0]: Creation complete after 22s (ID: i-008a076b29465f298)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (30s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (30s elapsed)[0m[0m
+[0m[1mmodule.runtime.web_instance.aws_instance.default.0: Still creating... (30s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.web_instance.aws_instance.default[0]: Creation complete after 33s (ID: i-027446d4c2092c16b)[0m[0m
+[0m[1mmodule.runtime.module.load_balancer.aws_elb.default: Creating...[0m
+  arn:                                    "" => "<computed>"
+  availability_zones.#:                   "" => "<computed>"
+  connection_draining:                    "" => "true"
+  connection_draining_timeout:            "" => "400"
+  cross_zone_load_balancing:              "" => "true"
+  dns_name:                               "" => "<computed>"
+  health_check.#:                         "" => "1"
+  health_check.0.healthy_threshold:       "" => "2"
+  health_check.0.interval:                "" => "30"
+  health_check.0.target:                  "" => "HTTP:8000/"
+  health_check.0.timeout:                 "" => "3"
+  health_check.0.unhealthy_threshold:     "" => "2"
+  idle_timeout:                           "" => "400"
+  instances.#:                            "" => "2"
+  instances.1376835512:                   "" => "i-0be7e2d8a50bea485"
+  instances.35025768:                     "" => "i-027446d4c2092c16b"
+  internal:                               "" => "<computed>"
+  listener.#:                             "" => "1"
+  listener.3057123346.instance_port:      "" => "80"
+  listener.3057123346.instance_protocol:  "" => "http"
+  listener.3057123346.lb_port:            "" => "80"
+  listener.3057123346.lb_protocol:        "" => "http"
+  listener.3057123346.ssl_certificate_id: "" => ""
+  name:                                   "" => "test1-lb"
+  security_groups.#:                      "" => "1"
+  security_groups.4100448001:             "" => "sg-09dd78bc541284810"
+  source_security_group:                  "" => "<computed>"
+  source_security_group_id:               "" => "<computed>"
+  subnets.#:                              "" => "2"
+  subnets.4168292781:                     "" => "subnet-0301297ddcfdbba45"
+  subnets.738472925:                      "" => "subnet-07ce39ab89ea325b6"
+  tags.%:                                 "" => "1"
+  tags.Name:                              "" => "test1-lb"
+  zone_id:                                "" => "<computed>"[0m
+[0m[1mmodule.runtime.module.load_balancer.aws_elb.default: Creation complete after 3s (ID: test1-lb)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (40s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (40s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (50s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (50s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (1m0s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (1m10s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (1m10s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (1m20s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (1m20s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (1m30s elapsed)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.0: Still creating... (1m30s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[0]: Creation complete after 1m38s (ID: nat-06178258c31d1ff45)[0m[0m
+[0m[1mmodule.runtime.nat_gateway.aws_nat_gateway.default.1: Still creating... (1m40s elapsed)[0m[0m
+[0m[1mmodule.runtime.module.nat_gateway.aws_nat_gateway.default[1]: Creation complete after 1m48s (ID: nat-0bf414e909e80e052)[0m[0m
