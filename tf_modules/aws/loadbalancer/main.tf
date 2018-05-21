@@ -1,27 +1,31 @@
-resource "aws_elb" "loadbalancer" {
-  name = "${var.properties['name']
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]	
+resource "aws_elb" "default" {
+  name = "${var.name}"
+  subnets = ["${var.subnet_id}"]  
 
-  access_logs {
-    bucket        = "foo"
-    bucket_prefix = "bar"
-    interval      = 60
-  }
+  #access_logs {
+  #  bucket        = "${var.log_bucket}"
+  #  bucket_prefix = "${var.prefix}"
+  #  interval      = 60
+  #}
+
+  security_groups = ["${var.security_group}"]
+  instances       = ["${var.instance_id}"]
 
   listener {
-    instance_port     = 8000
+    instance_port     = 80
     instance_protocol = "http"
     lb_port           = 80
     lb_protocol       = "http"
   }
 
-  listener {
-    instance_port      = 8000
-    instance_protocol  = "http"
-    lb_port            = 443
-    lb_protocol        = "https"
-    ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
-  }
+# Need a certificate
+#  listener {
+#    instance_port      = 80
+#    instance_protocol  = "http"
+#    lb_port            = 443
+#    lb_protocol        = "https"
+#    ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
+#  }
 
   health_check {
     healthy_threshold   = 2
@@ -31,14 +35,13 @@ resource "aws_elb" "loadbalancer" {
     interval            = 30
   }
 
-  instances                   = ["${aws_instance.foo.id}"]
   cross_zone_load_balancing   = true
   idle_timeout                = 400
   connection_draining         = true
   connection_draining_timeout = 400
 
   tags {
-    Name = "foobar-terraform-elb"
+    Name = "${var.name}"
   }
 
 }

@@ -2,11 +2,12 @@ init:
 	terraform init
 
 plan: init
-	terraform plan
+	terraform plan -var-file ../terraform.tfvars
 
 apply: plan
-	terraform apply
+	terraform apply -var-file ../terraform.tfvars -auto-approve 
 
 destroy:
+	terraform destroy -var-file ../terraform.tfvars -auto-approve 
 
 test:
