@@ -1,6 +1,6 @@
 variable "nat_eip" {
-  type = "string"
+  type = "list"
 }
 variable "subnet_id" {
-  type = "string"
+  type = "list"
 }

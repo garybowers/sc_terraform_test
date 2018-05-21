@@ -1,12 +1,8 @@
-resource "aws_default_vpc" "default" {
-    tags {
-        Name = "Default VPC"
-    }
-}
-
 resource "aws_elb" "default" {
   name = "${var.name}"
-  availability_zones = ["${var.availability_zones}"]
+  #availability_zones = ["${var.availability_zones}"]
+  #availability_zones = "${element(split(", ", var.availability_zones), count.index)}" 
+  availability_zones = ["eu-west-1a","eu-west-1b"]
 
   access_logs {
     bucket        = "${var.log_bucket}"
@@ -24,6 +20,7 @@ resource "aws_elb" "default" {
     lb_protocol       = "http"
   }
 
+# Need a certificate
 #  listener {
 #    instance_port      = 80
 #    instance_protocol  = "http"

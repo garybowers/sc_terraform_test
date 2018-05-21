@@ -27,5 +27,5 @@ variable "security_group" {
 }
 
 variable "availability_zones" {
-  type = "list"
+  type = "string"
 }

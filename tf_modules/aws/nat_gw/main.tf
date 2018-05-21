@@ -1,4 +1,5 @@
 resource "aws_nat_gateway" "default" {
-  allocation_id = "${var.nat_eip}"
-  subnet_id     = "${var.subnet_id}"
+  count = "2"
+  allocation_id = "${element(var.nat_eip,count.index)}"
+  subnet_id = "${element(var.subnet_id,count.index)}"
 }
