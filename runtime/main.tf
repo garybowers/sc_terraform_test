@@ -1,4 +1,3 @@
-
 module "vpc" {
   source                    = "../tf_modules/aws/vpc"
   name			    = "${var.prefix}-vpc"
@@ -23,10 +22,6 @@ module "eip" {
   source                    = "../tf_modules/aws/eip"
 }
 
-#module "nat_gateway" {
-#  source                    = "../tf_modules/aws/nat_gw"
-#}
-
 module "load_balancer" {
   source		    = "../tf_modules/aws/loadbalancer"
   name			    = "${var.prefix}-lb"
@@ -35,6 +30,7 @@ module "load_balancer" {
   instance_id		    = "${module.web_instance.aws_instance_id}"
   subnet_id		    = "${module.web_subnet.aws_subnet_id}"
   security_group	    = "${module.security_group.lb_security_group}"
+  availability_zones	    = "${var.aws_azs}"
 }
 
 module "keypair" {
@@ -49,6 +45,14 @@ module "web_subnet" {
   name                      = "${var.prefix}-web_server_subnet"
   subnet_cidr               = "${var.public_cidr}"
   vpc_id		    = "${module.vpc.aws_vpc_id}"
+  availability_zones	    = "${var.aws_azs}"
+  az_count		    = "${var.az_count}"
+}
+
+module "nat_gateway" {
+  source                    = "../tf_modules/aws/nat_gw"
+  subnet_id		    = "${module.web_subnet.aws_subnet_id}"
+  nat_eip		    = "${module.eip.aws_eip_nat_ips}"
 }
 
 module "web_instance" {
@@ -67,6 +71,8 @@ module "db_subnet" {
   name                      = "${var.prefix}-db_server_subnet"
   subnet_cidr               = "${var.database_cidr}"
   vpc_id		    = "${module.vpc.aws_vpc_id}"
+  availability_zones	    = "${var.aws_azs}"
+  az_count		    = "${var.az_count}"
 }
 
 module "db_instance" {
@@ -85,6 +91,8 @@ module "app_subnet" {
   name                      = "${var.prefix}-app_server_subnet"
   subnet_cidr               = "${var.appserver_cidr}"
   vpc_id		    = "${module.vpc.aws_vpc_id}"
+  availability_zones	    = "${var.aws_azs}"
+  az_count		    = "${var.az_count}"
 }
 
 module "app_instance" {

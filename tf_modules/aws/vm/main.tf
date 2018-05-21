@@ -12,12 +12,4 @@ resource "aws_instance" "default" {
   key_name = "${var.key_pair}"
   vpc_security_group_ids = ["${var.security_group}"]
   subnet_id = "${var.subnetid}"
-
-  provisioner "remote-exec" {
-    inline = [
-      "sudo apt-get -y update",
-      "sudo apt-get -y install nginx",
-      "sudo service nginx start",
-    ]
-  }
 }

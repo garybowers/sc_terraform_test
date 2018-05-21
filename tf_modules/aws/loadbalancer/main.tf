@@ -1,6 +1,8 @@
 resource "aws_elb" "default" {
   name = "${var.name}"
-  availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]	
+  #availability_zones = ["${var.availability_zones}"]
+  #availability_zones = "${element(split(", ", var.availability_zones), count.index)}" 
+  availability_zones = ["eu-west-1a","eu-west-1b"]
 
   access_logs {
     bucket        = "${var.log_bucket}"
@@ -8,7 +10,6 @@ resource "aws_elb" "default" {
     interval      = 60
   }
 
-  subnets         = ["${var.subnet_id}"]
   security_groups = ["${var.security_group}"]
   instances       = ["${var.instance_id}"]
 
@@ -19,13 +20,14 @@ resource "aws_elb" "default" {
     lb_protocol       = "http"
   }
 
-  listener {
-    instance_port      = 80
-    instance_protocol  = "http"
-    lb_port            = 443
-    lb_protocol        = "https"
-    ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
-  }
+# Need a certificate
+#  listener {
+#    instance_port      = 80
+#    instance_protocol  = "http"
+#    lb_port            = 443
+#    lb_protocol        = "https"
+#    ssl_certificate_id = "arn:aws:iam::123456789012:server-certificate/certName"
+#  }
 
   health_check {
     healthy_threshold   = 2
