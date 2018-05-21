@@ -22,10 +22,6 @@ module "eip" {
   source                    = "../tf_modules/aws/eip"
 }
 
-#module "nat_gateway" {
-#  source                    = "../tf_modules/aws/nat_gw"
-#}
-
 module "load_balancer" {
   source		    = "../tf_modules/aws/loadbalancer"
   name			    = "${var.prefix}-lb"
@@ -51,6 +47,11 @@ module "web_subnet" {
   vpc_id		    = "${module.vpc.aws_vpc_id}"
 }
 
+module "nat_gateway" {
+  source                    = "../tf_modules/aws/nat_gw"
+  subnet_id		    = "{module.web_subnet.aws_subnet_id}"
+  nat_eip		    = "{module.eip.aws_eip_nat_ips}"
+}
 module "web_instance" {
   name			    = "${var.prefix}-web-vm"
   source                    = "../tf_modules/aws/vm"

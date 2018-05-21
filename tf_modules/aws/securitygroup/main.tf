@@ -1,7 +1,13 @@
+resource "aws_default_vpc" "default" {
+    tags {
+        Name = "Default VPC"
+    }
+}
+
 resource "aws_security_group" "elb" {
   name        = "${var.name}-elb"
   description = "Security Group for ELB"
-  vpc_id      = "${var.vpc_id}"
+  vpc_id      = "${aws_default_vpc.default.id}"
 
   # HTTP access from anywhere
   ingress {
@@ -50,3 +56,53 @@ resource "aws_security_group" "default" {
   }
 }
 
+resource "aws_security_group" "web" {
+
+  name 		= "${var.name}-web"
+  description 	= "Security group applied to webservers"
+  vpc_id	= "${var.vpc_id}"
+
+  ingress {
+      from_port = 80
+      to_port = 80
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags {
+	Name = "${var.name}-web"
+  }
+}
+
+resource "aws_security_group" "app" {
+  name 		= "${var.name}-app"
+  description 	= "Security group applied to appservers"
+  vpc_id	= "${var.vpc_id}"
+
+  ingress {
+      from_port = 80
+      to_port = 80
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags {
+	Name = "${var.name}-app"
+  }
+
+}
+
+resource "aws_security_group" "db" {
+  name 		= "${var.name}-db"
+  description 	= "Security group applied to dbservers"
+  vpc_id	= "${var.vpc_id}"
+
+  ingress {
+      from_port = 3306 
+      to_port = 3306
+      protocol = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+  }
+  tags {
+	Name = "${var.name}-db"
+  }
+
+}
