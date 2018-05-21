@@ -22,3 +22,18 @@ variable "appserver_cidr" {
   type = "string"
   description = "CIDR for the application servers"
 }
+
+variable "az_count" {
+  type = "string"
+  description = "Availability Zone count"
+}
+
+variable "aws_azs" {
+  type = "map"
+  description = "Availability zone list as comma seperated list"
+}
+
+variable "region" {
+  type = "string"
+  description = "Region"
+}

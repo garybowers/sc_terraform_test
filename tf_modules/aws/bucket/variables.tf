@@ -1,3 +1,3 @@
-variable prefix {
+variable "name" {
   type = "string"
 }
