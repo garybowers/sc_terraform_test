@@ -29,7 +29,7 @@ variable "az_count" {
 }
 
 variable "aws_azs" {
-  type = "map"
+  type = "list"
   description = "Availability zone list as comma seperated list"
 }
 

@@ -26,7 +26,6 @@ variable "security_group" {
   type = "string"
 }
 
-variable "properties" {
-  type = "map"
-  default = {}
+variable "availability_zones" {
+  type = "list"
 }

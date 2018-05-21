@@ -1,4 +1,3 @@
-
 module "vpc" {
   source                    = "../tf_modules/aws/vpc"
   name			    = "${var.prefix}-vpc"
@@ -35,6 +34,7 @@ module "load_balancer" {
   instance_id		    = "${module.web_instance.aws_instance_id}"
   subnet_id		    = "${module.web_subnet.aws_subnet_id}"
   security_group	    = "${module.security_group.lb_security_group}"
+  availability_zones	    = "${var.aws_azs}"
 }
 
 module "keypair" {
