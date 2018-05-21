@@ -58,7 +58,7 @@ module "db_subnet" {
   vpc_id		    = "${module.vpc.aws_vpc_id}"
 }
 
-module "web_instance" {
+module "db_instance" {
   name			    = "${var.prefix}-web-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"
@@ -74,7 +74,7 @@ module "application_subnet" {
   vpc_id		    = "${module.vpc.aws_vpc_id}"
 }
 
-module "web_instance" {
+module "app_instance" {
   name			    = "${var.prefix}-web-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"

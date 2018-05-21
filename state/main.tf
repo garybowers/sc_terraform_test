@@ -1,11 +1,11 @@
 # Create the bucket for the access logs
-module "bucket" {
+module "bucket" "logs" {
   source      = "../tf_modules/aws/bucket"
   name 	      = "${var.prefix}-access-logs"
 
 }
 # Create the bucket for the database
-module "bucket" {
+module "bucket" "db" {
   source      = "../tf_modules/aws/bucket"
   name        = "${var.prefix}-database"
 
