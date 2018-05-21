@@ -1,5 +1,5 @@
 # Create the bucket for the access logs
-module "logs_bucket"" {
+module "logs_bucket" {
   source      = "../tf_modules/aws/bucket"
   name 	      = "${var.prefix}-access-logs"
 

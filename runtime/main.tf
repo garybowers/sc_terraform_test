@@ -3,7 +3,6 @@ module "vpc" {
   source                    = "../tf_modules/aws/vpc"
   name			    = "${var.prefix}-vpc"
   vpc_cidr		    = "${var.vpc_cidr}"
-  vpc_instance_tenancy      = "dedicated"
   vpc_enable_dns_hostnames  = "true"
   vpc_enable_classiclink    = "false"
 }
@@ -34,6 +33,12 @@ module "eip" {
 #  vpc_id		    = "${module.vpc.aws_vpc_id}"
 #}
 
+module "keypair" {
+  source                    = "../tf_modules/aws/key_pair"
+  key_name		    = "${var.ssh_user}"
+  public_key_path	    = "${var.public_key_path}"
+}
+
 ############## Create the subnets and the vm's for the instances ###############
 module "web_subnet" {
   source                    = "../tf_modules/aws/subnet"
@@ -46,9 +51,11 @@ module "web_instance" {
   name			    = "${var.prefix}-web-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"
-  vpc_id		    = "${module.vpc.aws_vpc_id}"
   subnetid		    = "${module.web_subnet.aws_subnet_id}"
   region		    = "${var.region}"
+  ssh_user		    = "${var.ssh_user}"
+  key_pair		    = "${module.keypair.aws_key_pair}"
+  security_group	    = "${module.security_group.aws_security_group}"
 }
 
 module "db_subnet" {
@@ -62,9 +69,10 @@ module "db_instance" {
   name			    = "${var.prefix}-web-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"
-  vpc_id		    = "${module.vpc.aws_vpc_id}"
   subnetid		    = "${module.web_subnet.aws_subnet_id}"
   region		    = "${var.region}"
+  ssh_user		    = "${var.ssh_user}"
+  security_group	    = "${module.security_group.aws_security_group}"
 }
 
 module "application_subnet" {
@@ -78,8 +86,9 @@ module "app_instance" {
   name			    = "${var.prefix}-web-vm"
   source                    = "../tf_modules/aws/vm"
   instance_type		    = "t2.micro"
-  vpc_id		    = "${module.vpc.aws_vpc_id}"
   subnetid		    = "${module.web_subnet.aws_subnet_id}"
   region		    = "${var.region}"
+  ssh_user		    = "${var.ssh_user}"
+  security_group	    = "${module.security_group.aws_security_group}"
 }
 

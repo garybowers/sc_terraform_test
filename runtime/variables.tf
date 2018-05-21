@@ -37,3 +37,13 @@ variable "region" {
   type = "string"
   description = "Region"
 }
+
+variable "ssh_user" {
+  type = "string"
+  description = "Username and keyname for SSH"
+}
+
+variable "public_key_path" {
+  type = "string"
+  description = "Path to the ssh public key"
+}

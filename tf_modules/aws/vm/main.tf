@@ -1,39 +1,3 @@
-resource "aws_security_group" "default" {
-  name        = "terraform_example"
-  description = "Used in the terraform"
-  vpc_id      = "${var.vpc_id}"
-
-  # SSH access from anywhere
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-
-  # HTTP access from the VPC
-  ingress {
-    from_port   = 80
-    to_port     = 80
-    protocol    = "tcp"
-    cidr_blocks = ["10.0.0.0/16"]
-  }
-
-  # outbound internet access
-  egress {
-    from_port   = 0
-    to_port     = 0
-    protocol    = "-1"
-    cidr_blocks = ["0.0.0.0/0"]
-  }
-}
-
-
-resource "aws_key_pair" "auth" {
-  key_name   = "${var.key_name}"
-  public_key = "${file(var.public_key_path)}"
-}
-
 resource "aws_instance" "default" {
   connection {
     user = "${var.ssh_user}"
@@ -41,9 +5,9 @@ resource "aws_instance" "default" {
 
   instance_type = "${var.instance_type}"
 
-  ami = "${lookup(var.aws_amis, var.region)}"
-  key_name = "${aws_key_pair.auth.id}"
-  vpc_security_group_ids = ["${aws_security_group.default.id}"]
+  ami = "${var.ami_id}"
+  key_name = "${var.key_pair}"
+  vpc_security_group_ids = ["${var.security_group}"]
   subnet_id = "${var.subnetid}"
 
   provisioner "remote-exec" {

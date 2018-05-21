@@ -14,4 +14,6 @@ module runtime "runtime" {
   appserver_cidr = "192.168.1.0/24"
   aws_azs        = "eu-west-1a, eu-west-1b"
   az_count       = 2
+  public_key_path = "~/.ssh/id_rsa.pub"
+  ssh_user       = "gary"
 }

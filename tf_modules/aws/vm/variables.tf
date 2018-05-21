@@ -2,9 +2,9 @@ variable "name" {
   type         = "string"
 }
 
-variable "amiid" {
+variable "ami_id" {
   type         = "string"
-  default      = "ami-b47b4bcd"
+  default      = "ami-f90a4880"
   description  = "AMI Id for the os image"
 }
 
@@ -13,10 +13,6 @@ variable "subnetid" {
   description  = "id of the subnet the vm should be attached to"
 }
 
-variable "vpc_id" {
-  type         = "string"
-  description  = "id of the vpc"
-}
 
 variable "instance_type" {
   type         = "string"
@@ -26,4 +22,17 @@ variable "instance_type" {
 variable "region" {
   type         = "string"
   description  = "AWS Region"
+}
+
+variable "ssh_user" {
+  type         = "string"
+  description  = "Name of the ssh user to create"
+}
+
+variable "security_group" {
+  type         = "string"
+}
+
+variable "key_pair" {
+  type         = "string"
 }
