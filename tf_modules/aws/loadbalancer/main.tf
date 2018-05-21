@@ -3,8 +3,8 @@ resource "aws_elb" "loadbalancer" {
   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]	
 
   access_logs {
-    bucket        = "foo"
-    bucket_prefix = "bar"
+    bucket        = "${var.logbucket}"
+    bucket_prefix = "${var.prefix}"
     interval      = 60
   }
 
@@ -38,7 +38,7 @@ resource "aws_elb" "loadbalancer" {
   connection_draining_timeout = 400
 
   tags {
-    Name = "foobar-terraform-elb"
+    Name = "${var.properties['name']"
   }
 
 }
