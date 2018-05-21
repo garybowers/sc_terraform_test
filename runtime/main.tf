@@ -17,6 +17,7 @@ module "nat_gateway" {
 module "load_balancer" {
   source		    = "../tf_modules/aws/loadbalancer"
   name			    = "${var.prefix}-lb"
+  vpc_id		    = "${module.vpc.aws_vpc_id}"
 }
 
 module "web_subnet" {
