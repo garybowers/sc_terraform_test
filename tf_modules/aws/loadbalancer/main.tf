@@ -1,5 +1,5 @@
-resource "aws_elb" "loadbalancer" {
-  name = "${var.properties['name']
+resource "aws_elb" "default" {
+  name = "${var.properties['name']}"
   availability_zones = ["us-west-2a", "us-west-2b", "us-west-2c"]	
 
   access_logs {
@@ -38,7 +38,7 @@ resource "aws_elb" "loadbalancer" {
   connection_draining_timeout = 400
 
   tags {
-    Name = "${var.properties['name']"
+    Name = "${var.properties['name']}"
   }
 
 }

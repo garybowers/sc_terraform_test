@@ -14,12 +14,6 @@ module "nat_gateway" {
   vpc_id		    = "${module.vpc.aws_vpc_id}"
 }
 
-module "load_balancer" {
-  source		    = "../tf_modules/aws/loadbalancer"
-  name			    = "${var.prefix}-lb"
-  vpc_id		    = "${module.vpc.aws_vpc_id}"
-}
-
 module "web_subnet" {
   source                    = "../tf_modules/aws/subnet"
   name                      = "${var.prefix}-web_server_subnet"
@@ -38,5 +32,11 @@ module "application_subnet" {
   source                    = "../tf_modules/aws/subnet"
   name                      = "${var.prefix}-app_server_subnet"
   subnet_cidr               = "${var.appserver_cidr}"
+  vpc_id		    = "${module.vpc.aws_vpc_id}"
+}
+
+module "load_balancer" {
+  source		    = "../tf_modules/aws/loadbalancer"
+  name			    = "${var.prefix}-lb"
   vpc_id		    = "${module.vpc.aws_vpc_id}"
 }

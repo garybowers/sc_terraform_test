@@ -1,3 +1,6 @@
+module state "state" {
+
+}
 
 module runtime "runtime" {
   prefix         = "gary_test"
