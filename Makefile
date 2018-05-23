@@ -11,3 +11,6 @@ destroy:
 	terraform destroy -var-file ../terraform.tfvars -auto-approve 
 
 test:
+	cd tests
+	dep ensure
+	go test -v -run TestWebDeployment
