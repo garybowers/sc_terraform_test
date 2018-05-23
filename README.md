@@ -18,6 +18,8 @@ Output of the terraform runs are in the _DOC/ folder, the errors were my free AW
 
 Tests are in the tests/ folder, however I ran out of time to do full coverage.
 
+Also note: a bug in terraform hurt me [https://github.com/hashicorp/terraform/issues/12570](https://github.com/hashicorp/terraform/issues/12570) so i had to pass around strings... yuk! 
+
 To run the tests execute the following:
 
 ```bash
